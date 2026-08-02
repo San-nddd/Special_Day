@@ -11,45 +11,72 @@
 
     <canvas id="sakuraCanvas"></canvas>
 
-    <!-- Hero Section -->
-    <section class="hero slide-in">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
+ <section class="hero slide-in">
+    <div class="hero-overlay"></div>
+    
+    <div class="hero-content">
+        <!-- Badge sekarang berada di dalam kelompok kiri -->
+        <div class="hero-content-left">
             <span class="badge-sakura">🌸 Special Day</span>
             <h1>HAPPY<br>BIRTHDAY!</h1>
             <p class="date">August 03, 2026</p>
-            <p class="age-text">18th</p>
         </div>
-        <div class="hero-image-wrapper">
-            <img src="img/IMG-20260710-WA0023.jpg.jpeg" alt="Foto Utama" class="hero-image" onerror="this.src='https://placehold.co/600x800/f8c8dc/333?text=Foto+Utama'">
-        </div>
-    </section>
-
-    <!-- Intro Section & Kolase Bergerak Menyerong Seamless -->
+        
+        <!-- Tulisan ini akan otomatis terlempar ke ujung kanan -->
+        <p class="age-text" style="padding-right: 15vh;">18th</p>
+    </div>
     
+    <div class="hero-image-wrapper">
+        <img src="img/IMG-20260710-WA0023.jpg.jpeg" alt="Foto Utama" class="hero-image" onerror="this.src='https://placehold.co/600x800/f8c8dc/333?text=Foto+Utama'">
+    </div>
+</section>
+    <!-- Intro Section & Kolase Bergerak Menyerong Seamless -->
     <div class="slanted-collage-container">
-        <div class="marquee-track">
-            <!-- Grup Foto 1 -->
-            <div class="marquee-group">
-                <div class="collage-item"><img src="img/1.jpg.jpeg" alt="Memory 1"></div>
-                <div class="collage-item"><img src="img/IMG_6200.jpg.jpeg" alt="Memory 2"></div>
-                <div class="collage-item"><img src="https://placehold.co/200x250/e05297/fff?text=Foto+3" alt="Memory 3"></div>
-                <div class="collage-item"><img src="https://placehold.co/200x250/fad0c4/333?text=Foto+4" alt="Memory 4"></div>
-                <div class="collage-item"><img src="https://placehold.co/200x250/ffd1dc/fff?text=Foto+5" alt="Memory 5"></div>
-                <div class="collage-item"><img src="https://placehold.co/200x250/ffb7c5/333?text=Foto+6" alt="Memory 6"></div>
-            </div>
-                <!-- Grup Foto 2 (Duplikat Persis agar Bergerak Tanpa Putus) -->
-                <div class="marquee-group" aria-hidden="true">
-                    <div class="collage-item"><img src="img/1.jpg.jpeg" alt="Memory 1"></div>
-                    <div class="collage-item"><img src="img/IMG_6200.jpg.jpeg" alt="Memory 2"></div>
-                    <div class="collage-item"><img src="https://placehold.co/200x250/e05297/fff?text=Foto+3" alt="Memory 3"></div>
-                    <div class="collage-item"><img src="https://placehold.co/200x250/fad0c4/333?text=Foto+4" alt="Memory 4"></div>
-                    <div class="collage-item"><img src="https://placehold.co/200x250/ffd1dc/fff?text=Foto+5" alt="Memory 5"></div>
-                    <div class="collage-item"><img src="https://placehold.co/200x250/ffb7c5/333?text=Foto+6" alt="Memory 6"></div>
-                </div>
-            </div>
+    <!-- BARIS 1: Bergerak ke Kiri (Normal) -->
+    <div class="marquee-track track-left">
+        <!-- Grup Foto 1 -->
+        <div class="marquee-group">
+            <div class="collage-item"><img src="img/1.jpg.jpeg" alt="Memory 1"></div>
+            <div class="collage-item"><img src="img/IMG_6200.jpg.jpeg" alt="Memory 2"></div>
+            <div class="collage-item"><img src="img/PXL_20250406_143928672.jpg.jpeg" alt="Memory 3"></div>
+            <div class="collage-item"><img src="img/IMG_20241210_163713.jpg.jpeg" alt="Memory 4"></div>
+            <div class="collage-item"><img src="img/1b129296c0aad6e53dc263ce115b0784_1729592951235_0.webp.jpg.jpeg" alt="Memory 5"></div>
+            <div class="collage-item"><img src="img/DSC_0290.jpg.jpeg" alt="Memory 6"></div>
         </div>
-    </section>
+        <!-- Grup Foto 2 (Duplikat Persis) -->
+        <div class="marquee-group" aria-hidden="true">
+            <div class="collage-item"><img src="img/1.jpg.jpeg" alt="Memory 1"></div>
+            <div class="collage-item"><img src="img/IMG_6200.jpg.jpeg" alt="Memory 2"></div>
+            <div class="collage-item"><img src="img/PXL_20250406_143928672.jpg.jpeg" alt="Memory 3"></div>
+            <div class="collage-item"><img src="img/IMG_20241210_163713.jpg.jpeg" alt="Memory 4"></div>
+            <div class="collage-item"><img src="img/1b129296c0aad6e53dc263ce115b0784_1729592951235_0.webp.jpg.jpeg" alt="Memory 5"></div>
+            <div class="collage-item"><img src="img/DSC_0290.jpg.jpeg" alt="Memory 6"></div>
+        </div>
+    </div>
+
+    <!-- BARIS 2: Bergerak ke Kanan (Asynchronous / Terbalik) -->
+    <div class="marquee-track track-right">
+        <!-- Grup Foto 1 -->
+        <div class="marquee-group">
+            <div class="collage-item"><img src="img/PXL_20250406_143503554.jpg.jpeg" alt="Memory 6"></div>
+            <div class="collage-item"><img src="img/IMG-20260328-WA0024.jpg.jpeg" alt="Memory 5"></div>
+            <div class="collage-item"><img src="img/PXL_20260312_161726326.jpg.jpeg" alt="Memory 4"></div>
+            <div class="collage-item"><img src="img/IMG_20260328_145546.jpg.jpeg" alt="Memory 3"></div>
+            <div class="collage-item"><img src="img/20260329_164453_187_IMG_4797_20260329_164356.JPG.jpeg" alt="Memory 2"></div>
+            <div class="collage-item"><img src="img/DSC_0010.jpg.jpeg" alt="Memory 1"></div>
+        </div>
+        <!-- Grup Foto 2 (Duplikat Persis) -->
+        <div class="marquee-group" aria-hidden="true">
+            <div class="collage-item"><img src="img/PXL_20250406_143503554.jpg.jpeg" alt="Memory 6"></div>
+            <div class="collage-item"><img src="img/IMG-20260328-WA0024.jpg.jpeg" alt="Memory 5"></div>
+            <div class="collage-item"><img src="img/PXL_20260312_161726326.jpg.jpeg" alt="Memory 4"></div>
+            <div class="collage-item"><img src="img/IMG_20260328_145546.jpg.jpeg" alt="Memory 3"></div>
+            <div class="collage-item"><img src="img/20260329_164453_187_IMG_4797_20260329_164356.JPG.jpeg" alt="Memory 2"></div>
+            <div class="collage-item"><img src="img/DSC_0010.jpg.jpeg" alt="Memory 1"></div>
+        </div>
+    </div>
+</div>
+
             <section class="intro slide-in">
                 <div class="intro-title-wrapper">
                     <h2 class="elegant-title">3 things you get when you turn <span>18</span></h2>
@@ -65,7 +92,7 @@
         </div>
         <div class="photo-container">
             <div class="polaroid-frame glow-effect">
-                <img src="https://placehold.co/400x500/ffd1dc/8b263e?text=Trisakti+Multimedia" alt="Trisakti Photo" class="polaroid">
+                <img src="img/IMG_6659.jpg" alt="" class="polaroid">
                 <div class="polaroid-caption">PKL Age 🌸</div>
             </div>
         </div>
@@ -81,10 +108,10 @@
         </div>
         <div class="photo-container multi-photo">
             <div class="polaroid-frame rotate-left">
-                <img src="https://placehold.co/300x400/f8c8dc/8b263e?text=Consistency+1" alt="Consistency 1" class="polaroid">
+                <img src="img/IMG_6200.jpg.jpeg" alt="Consistency 1" class="polaroid">
             </div>
             <div class="polaroid-frame rotate-right">
-                <img src="https://placehold.co/300x400/ffb7c5/8b263e?text=Consistency+2" alt="Consistency 2" class="polaroid">
+                <img src="img/IMG_6647.jpg" alt="Consistency 2" class="polaroid">
             </div>
         </div>
     </section>
@@ -99,7 +126,7 @@
         </div>
         <div class="photo-container">
             <div class="polaroid-frame photobooth-grid">
-                <img src="https://placehold.co/400x500/e05297/fff?text=Kolase+Foto+Bersama" alt="Photobooth Grid" class="polaroid">
+                <img src="img/WhatsApp Image 2026-08-02 at 22.30.41.jpeg" alt="Photobooth Grid" class="polaroid">
                 <div class="polaroid-caption">Always & Forever 💕</div>
             </div>
         </div>
@@ -113,7 +140,7 @@
         </div>
         <div class="love-grid">
             <div class="love-image-box">
-                <img src="https://placehold.co/400x550/3a1c28/fff?text=Silhouette+Dissya" alt="To Love Photo" class="silhouette-img">
+                <img src="img/IMG_6174.jpg.jpeg" alt="To Love Photo" class="silhouette-img">
             </div>
             <div class="text-card glass-card">
                 <p class="love-text">
@@ -130,20 +157,20 @@
         <h2 class="section-heading">Our Favorite Moments</h2>
         <div class="memory-grid">
             <div class="memory-card">
-                <img src="https://placehold.co/300x300/ffd1dc/333?text=Moment+1" alt="Memory">
-                <h4>Smile & Laughs</h4>
+                <img src="img/1739423625358.jpg.jpeg" alt="Memory">
+                <h4>Graduation Memo</h4>
             </div>
             <div class="memory-card">
-                <img src="https://placehold.co/300x300/ffb7c5/333?text=Moment+2" alt="Memory">
-                <h4>School Days</h4>
+                <img src="img/DSC_0010.jpg.jpeg" alt="Memory">
+                <h4>MTS Days</h4>
             </div>
             <div class="memory-card">
-                <img src="https://placehold.co/300x300/f8c8dc/333?text=Moment+3" alt="Memory">
-                <h4>Sweet Escape</h4>
+                <img src="/img/IMG_20241124_160441.jpg.jpeg" alt="Memory">
+                <h4>Lucu lucuan</h4>
             </div>
             <div class="memory-card">
-                <img src="https://placehold.co/300x300/e05297/fff?text=Moment+4" alt="Memory">
-                <h4>Future Dreams</h4>
+                <img src="/img/165971-Ngonten_Box_-_Sumedang-d42-template.jpg.jpeg" alt="Memory">
+                <h4>Pramuka Pramuki</h4>
             </div>
         </div>
     </section>

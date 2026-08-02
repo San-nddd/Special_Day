@@ -4,40 +4,338 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Happy 18th Birthday - Nidaa Latifah Sayang</title>
-    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* ================= RESET & GLOBAL ================= */
+        :root {
+            --bg-main: #fcf4f6;
+            --sakura-light: #fde8ed;
+            --sakura-pink: #ffb7c5;
+            --sakura-deep: #e05297;
+            --rose-dark: #7a1f3d;
+            --text-color: #4a3e43;
+            --glass-bg: rgba(255, 255, 255, 0.82);
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Poppins', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-main);
+            color: var(--text-color);
+            overflow-x: hidden;
+            position: relative;
+            /* Pastikan body memenuhi layar */
+            width: 100vw;
+            height: 100vh;
+        }
+
+        /* ================= OVERLAY LANDSCAPE (PENTING) ================= */
+        /* Ini adalah layer penutup yang akan muncul saat HP dalam posisi Portrait */
+        #rotate-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(135deg, #2d1822 0%, #522538 50%, #8b3a5a 100%);
+            z-index: 99999; /* Paling atas menutupi semuanya */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 20px;
+            font-family: var(--font-body);
+        }
+
+        #rotate-overlay .icon-rotate {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            animation: rotatePhone 2s infinite ease-in-out;
+        }
+
+        #rotate-overlay h2 {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            color: var(--sakura-pink);
+            margin-bottom: 10px;
+        }
+
+        #rotate-overlay p {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            max-width: 300px;
+        }
+
+        /* Animasi ikon HP berputar */
+        @keyframes rotatePhone {
+            0% { transform: rotate(0deg); }
+            50% { transform: rotate(90deg); }
+            100% { transform: rotate(0deg); }
+        }
+
+        /* Jika layar Landscape, sembunyikan overlay-nya */
+        @media (orientation: landscape) {
+            #rotate-overlay {
+                display: none !important;
+            }
+        }
+
+        /* Khusus untuk Desktop/Laptop, sembunyikan overlay juga */
+        @media (min-width: 1024px) {
+            #rotate-overlay {
+                display: none !important;
+            }
+        }
+
+        /* ================= SAKURA CANVAS ================= */
+        #sakuraCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 99;
+        }
+
+        /* ================= TYPOGRAPHY ================= */
+        h1, h2, h3, .elegant-title, .age-text, .number-bg {
+            font-family: var(--font-heading);
+        }
+
+        .elegant-title {
+            font-size: 3.5rem;
+            font-style: italic;
+            text-align: center;
+            color: var(--rose-dark);
+        }
+
+        .elegant-title span { color: var(--sakura-deep); }
+
+        /* ================= SCROLL ANIMATIONS ================= */
+        .slide-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.9s cubic-bezier(0.25, 1, 0.5, 1), transform 0.9s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .slide-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ================= HERO SECTION (DESKTOP LAYOUT TETAP) ================= */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 8%;
+            background: linear-gradient(135deg, #2d1822 0%, #522538 50%, #8b3a5a 100%);
+            overflow: hidden;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 70% 50%, rgba(224, 82, 151, 0.25), transparent 70%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            color: white;
+            width: 100%;
+            max-width: 100%;
+            padding-top: 25vh;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .hero-content-left {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .badge-sakura {
+            display: inline-block;
+            padding: 6px 16px;
+            background: rgba(255, 183, 197, 0.25);
+            border: 1px solid var(--sakura-pink);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            backdrop-filter: blur(5px);
+        }
+
+        .hero-content h1 {
+            font-size: 5.5rem;
+            line-height: 1.05;
+            letter-spacing: 1px;
+            text-shadow: 2px 4px 10px rgba(0,0,0,0.3);
+            margin-bottom: 20px;
+        }
+
+        .age-text {
+            font-size: 15rem;
+            font-style: italic;
+            color: var(--sakura-pink);
+            margin-bottom: 20px;
+            white-space: nowrap;
+        }
+
+        .date {
+            margin-top: 15px;
+            font-size: 2rem;
+            letter-spacing: 2px;
+            opacity: 0.9;
+        }
+
+        .hero-image-wrapper {
+            position: absolute;
+            right: 0%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* ================= INTRO & SLANTED COLLAGE ================= */
+        .intro { padding: 80px 0; background-color: var(--sakura-light); position: relative; overflow: hidden; }
+        .intro-title-wrapper { padding: 0 5% 40px; }
+
+        .slanted-collage-container {
+            transform: rotate(-4deg) scale(1.05);
+            padding: 35px 0;
+            background: rgba(224, 82, 151, 0.08);
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            overflow: hidden;
+            width: 100vw;
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+            border-top: 2px dashed var(--sakura-pink);
+            border-bottom: 2px dashed var(--sakura-pink);
+            user-select: none;
+        }
+
+        .marquee-track { display: flex; width: max-content; }
+        .slanted-collage-container:hover .marquee-track { animation-play-state: paused; }
+        .marquee-group { display: flex; gap: 20px; padding-right: 20px; flex-shrink: 0; }
+
+        .track-left { animation: continuousMarqueeLeft 25s linear infinite; }
+        .track-right { animation: continuousMarqueeRight 30s linear infinite; }
+
+        @keyframes continuousMarqueeLeft { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        @keyframes continuousMarqueeRight { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
+
+        .collage-item {
+            width: 200px; height: 250px; flex-shrink: 0; background: white; padding: 10px 10px 30px 10px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); border-radius: 6px; transition: transform 0.3s ease;
+        }
+        .collage-item:hover { transform: scale(1.05) rotate(2deg); }
+        .collage-item img { width: 100%; height: 100%; object-fit: cover; border-radius: 4px; }
+
+        /* ================= CONTENT SECTIONS ================= */
+        .content-section {
+            position: relative; padding: 120px 8%; min-height: 85vh; display: flex; align-items: center; justify-content: space-between; gap: 40px;
+        }
+        .section-2 { background-color: #f7e8ef; flex-direction: row-reverse; }
+        .number-bg { position: absolute; font-size: 22rem; color: rgba(224, 82, 151, 0.06); z-index: 0; left: 5%; top: 50%; transform: translateY(-50%); user-select: none; }
+        .section-2 .number-bg { left: auto; right: 5%; }
+
+        .text-card {
+            position: relative; z-index: 2; background: var(--glass-bg); backdrop-filter: blur(12px); padding: 45px; max-width: 520px; border-radius: 16px; box-shadow: 0 15px 35px rgba(122, 31, 61, 0.08); border: 1px solid rgba(255, 255, 255, 0.8);
+        }
+        .tag-label { display: inline-block; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; color: var(--sakura-deep); font-weight: 600; margin-bottom: 10px; }
+        .text-card h3 { font-size: 2.4rem; margin-bottom: 18px; color: var(--rose-dark); }
+        .text-card p { line-height: 1.85; color: var(--text-color); font-size: 1rem; }
+
+        .polaroid-frame { background: white; padding: 16px 16px 45px 16px; box-shadow: 0 18px 30px rgba(0,0,0,0.12); border-radius: 6px; max-width: 360px; transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .polaroid-frame:hover { transform: scale(1.04) rotate(0deg) !important; }
+        .polaroid { width: 100%; height: auto; border-radius: 4px; display: block; }
+        .polaroid-caption { margin-top: 15px; text-align: center; font-family: var(--font-heading); font-style: italic; color: var(--rose-dark); }
+        .rotate-left { transform: rotate(-6deg); }
+        .rotate-right { transform: rotate(7deg) translateY(20px); }
+
+        /* ================= TO LOVE SECTION ================= */
+        .section-love { background: linear-gradient(180deg, #fce4ec 0%, #f3d0dd 100%); flex-direction: column; align-items: center; text-align: center; }
+        .love-header { margin-bottom: 40px; }
+        .love-header .subtitle { font-family: var(--font-heading); font-size: 1.6rem; color: var(--sakura-deep); font-style: italic; }
+        .love-grid { display: flex; gap: 40px; align-items: center; justify-content: center; flex-wrap: wrap; max-width: 1000px; }
+        .love-image-box { width: 320px; height: 440px; border-radius: 16px; overflow: hidden; box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
+        .silhouette-img { width: 100%; height: 100%; object-fit: cover; }
+        .glass-card { text-align: left; max-width: 550px; }
+
+        /* ================= MEMORY GALLERY ================= */
+        .memory-section { padding: 100px 8%; background: white; text-align: center; }
+        .section-heading { font-size: 3rem; color: var(--rose-dark); margin-bottom: 50px; font-style: italic; }
+        .memory-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; }
+        .memory-card { background: var(--bg-main); padding: 15px; border-radius: 12px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); transition: transform 0.3s ease; }
+        .memory-card:hover { transform: translateY(-8px); }
+        .memory-card img { width: 100%; height: 220px; object-fit: cover; border-radius: 8px; margin-bottom: 12px; }
+        .memory-card h4 { color: var(--rose-dark); font-weight: 500; }
+
+        /* ================= OUTRO ================= */
+        .outro { height: 85vh; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #3d1525 0%, #1a0810 100%); color: white; text-align: center; position: relative; }
+        .outro .elegant-title { color: var(--sakura-pink); font-size: 4.5rem; margin-bottom: 15px; }
+        .outro .name { font-family: var(--font-heading); font-style: italic; font-size: 2.2rem; letter-spacing: 2px; }
+        .sparkle { font-size: 2.5rem; margin-bottom: 10px; }
+        .footer-note { margin-top: 30px; font-size: 0.9rem; opacity: 0.6; }
+    </style>
 </head>
 <body>
 
+    <!-- ================= LANDSCAPE OVERLAY (PEMBLOKIR PORTRAIT) ================= -->
+    <div id="rotate-overlay">
+        <div class="icon-rotate">📱</div>
+        <h2>Rotate Your Device</h2>
+        <p>Harap putar layar HP Anda ke posisi <strong>Landscape (Mendatar)</strong> untuk membuka website ini.</p>
+    </div>
+
     <canvas id="sakuraCanvas"></canvas>
 
+    <!-- ================= HERO SECTION ================= -->
     <section class="hero slide-in">
         <div class="hero-overlay"></div>
-        
         <div class="hero-content">
-            <!-- Grup Teks Kiri Atas -->
-            <div class="hero-text-group">
-                <div class="hero-content-left">
-                    <span class="badge-sakura">🌸 Special Day</span>
-                    <h1>HAPPY<br>BIRTHDAY!</h1>
-                    <p class="date">August 03, 2026</p>
-                </div>
-                <!-- Tulisan 18 (Sekarang ada dalam satu grup agar tidak terlempar ke luar layar di HP) -->
-                <div class="age-wrapper">
-                    <p class="age-text">18th</p>
-                </div>
+            <div class="hero-content-left">
+                <span class="badge-sakura">🌸 Special Day</span>
+                <h1>HAPPY<br>BIRTHDAY!</h1>
+                <p class="date">August 03, 2026</p>
             </div>
-            
-            <!-- Foto Utama -->
-            <div class="hero-image-wrapper">
-                <img src="img/IMG-20260710-WA0023.jpg.jpeg" alt="Foto Utama" class="hero-image" onerror="this.src='https://placehold.co/600x800/f8c8dc/333?text=Foto+Utama'">
-            </div>
+            <p class="age-text">18th</p>
+        </div>
+        <div class="hero-image-wrapper">
+            <img src="img/IMG-20260710-WA0023.jpg.jpeg" alt="Foto Utama" class="hero-image" onerror="this.src='https://placehold.co/600x800/f8c8dc/333?text=Foto+Utama'">
         </div>
     </section>
 
-    <!-- Intro Section & Kolase Bergerak Menyerong Seamless -->
+    <!-- ================= INTRO & COLLAGE ================= -->
     <div class="slanted-collage-container">
-        <!-- BARIS 1: Bergerak ke Kiri (Normal) -->
         <div class="marquee-track track-left">
             <div class="marquee-group">
                 <div class="collage-item"><img src="img/1.jpg.jpeg" alt="Memory 1"></div>
@@ -56,8 +354,6 @@
                 <div class="collage-item"><img src="img/DSC_0290.jpg.jpeg" alt="Memory 6"></div>
             </div>
         </div>
-
-        <!-- BARIS 2: Bergerak ke Kanan (Asynchronous) -->
         <div class="marquee-track track-right">
             <div class="marquee-group">
                 <div class="collage-item"><img src="img/PXL_20250406_143503554.jpg.jpeg" alt="Memory 6"></div>
@@ -187,6 +483,94 @@
         </div>
     </section>
 
-    <script src="script.js"></script>
+    <!-- ================= SCRIPT ================= -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            
+            // 1. Scroll Reveal Observer
+            const observerOptions = { threshold: 0.15 };
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            const hiddenElements = document.querySelectorAll('.slide-in');
+            hiddenElements.forEach((el) => observer.observe(el));
+
+            // 2. Sakura Falling Petals Animation (Canvas)
+            const canvas = document.getElementById("sakuraCanvas");
+            const ctx = canvas.getContext("2d");
+
+            let width = canvas.width = window.innerWidth;
+            let height = canvas.height = window.innerHeight;
+
+            window.addEventListener("resize", () => {
+                width = canvas.width = window.innerWidth;
+                height = canvas.height = window.innerHeight;
+            });
+
+            const petalCount = 30;
+            const petals = [];
+
+            class Petal {
+                constructor() {
+                    this.x = Math.random() * width;
+                    this.y = Math.random() * height - height;
+                    this.size = Math.random() * 12 + 8;
+                    this.speedY = Math.random() * 1.5 + 0.8;
+                    this.speedX = Math.random() * 1 - 0.5;
+                    this.angle = Math.random() * 360;
+                    this.spin = Math.random() * 2 - 1;
+                    this.opacity = Math.random() * 0.5 + 0.4;
+                }
+
+                update() {
+                    this.y += this.speedY;
+                    this.x += Math.sin(this.y * 0.01) + this.speedX;
+                    this.angle += this.spin;
+
+                    if (this.y > height + 20) {
+                        this.y = -20;
+                        this.x = Math.random() * width;
+                    }
+                }
+
+                draw() {
+                    ctx.save();
+                    ctx.translate(this.x, this.y);
+                    ctx.rotate((this.angle * Math.PI) / 180);
+                    ctx.globalAlpha = this.opacity;
+                    
+                    // Menggambar Kelopak Bunga Sakura
+                    ctx.beginPath();
+                    ctx.fillStyle = "#ffb7c5";
+                    ctx.moveTo(0, 0);
+                    ctx.bezierCurveTo(-this.size / 2, -this.size / 2, -this.size, this.size / 3, 0, this.size);
+                    ctx.bezierCurveTo(this.size, this.size / 3, this.size / 2, -this.size / 2, 0, 0);
+                    ctx.fill();
+
+                    ctx.restore();
+                }
+            }
+
+            for (let i = 0; i < petalCount; i++) {
+                petals.push(new Petal());
+            }
+
+            function animateSakura() {
+                ctx.clearRect(0, 0, width, height);
+                petals.forEach((petal) => {
+                    petal.update();
+                    petal.draw();
+                });
+                requestAnimationFrame(animateSakura);
+            }
+
+            animateSakura();
+        });
+    </script>
 </body>
 </html>

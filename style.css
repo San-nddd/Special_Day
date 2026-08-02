@@ -70,8 +70,8 @@ h1, h2, h3, .elegant-title, .age-text, .number-bg {
     height: 100vh;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 0 8%;
+    justify-content: center;
+    padding: 0 5%;
     background: linear-gradient(135deg, #2d1822 0%, #522538 50%, #8b3a5a 100%);
     overflow: hidden;
 }
@@ -84,24 +84,31 @@ h1, h2, h3, .elegant-title, .age-text, .number-bg {
 
 .hero-content {
     position: relative;
-    z-index: 10; /* Menggunakan angka lebih tinggi agar mutlak di atas foto */
+    z-index: 10;
     color: white;
-    width: 100%; /* Memaksa kontainer menggunakan lebar penuh layar */
-    max-width: 100%; 
-    padding-top: 25vh; /* Ditambah agar posisi tulisan HAPPY BIRTHDAY lebih turun ke bawah */
-    
-    /* AKTIFKAN FLEXBOX DI SINI */
-    display: flex; 
-    justify-content: space-between; /* Melempar teks utama ke kiri, dan 18th ke kanan */
-    align-items: flex-end; /* Menyejajarkan bagian bawah tulisan agar rapi di bawah */
-    
+    width: 100%;
+    max-width: 1200px;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+}
+
+/* Grup teks (Kiri) dan Angka 18 (Kanan) */
+.hero-text-group {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-bottom: 15vh;
 }
 
 .hero-content-left {
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* Memastikan semua teks di dalam blok kiri rata kiri */
+    align-items: flex-start;
 }
+
 .badge-sakura {
     display: inline-block;
     padding: 6px 16px;
@@ -125,8 +132,8 @@ h1, h2, h3, .elegant-title, .age-text, .number-bg {
     font-size: 15rem;
     font-style: italic;
     color: var(--sakura-pink);
-    margin-bottom: 20px;
-     white-space: nowrap;
+    margin-bottom: -30px;
+    white-space: nowrap;
 }
 
 .date {
@@ -136,28 +143,81 @@ h1, h2, h3, .elegant-title, .age-text, .number-bg {
     opacity: 0.9;
 }
 
+/* Foto Utama Desktop */
 .hero-image-wrapper {
     position: absolute;
-    right: 0%; 
-    top: 50%;
-    transform: translateY(-50%); 
-    width: 100%; 
-    height: 100%; 
-    z-index: 1; /* Angka 1 membuat posisi gambar berada di bawah teks */
-    border-radius: 20px;
+    right: -5%;
+    bottom: 0;
+    width: 550px;
+    height: 85vh;
+    z-index: -1; /* Foto di bawah teks */
+    border-radius: 20px 20px 0 0;
     overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
 }
 
 .hero-image {
     width: 100%;
     height: 100%;
-    object-fit: cover; 
+    object-fit: cover;
+    object-position: top center;
 }
+
+/* Responsive HANDPHONE START */
+@media (max-width: 768px) {
+    .hero {
+        height: auto;
+        min-height: 100vh;
+        padding: 20px 5% 60px;
+        align-items: flex-end;
+    }
+
+    .hero-text-group {
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        padding-bottom: 0;
+        margin-top: 40px;
+        gap: 10px;
+    }
+
+    .hero-content-left {
+        align-items: center;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .hero-content h1 {
+        font-size: 3.2rem;
+    }
+
+    .date {
+        font-size: 1.4rem;
+    }
+
+    .age-text {
+        font-size: 6.5rem; /* Ukuran 18th diperkecil agar muat di layar */
+        color: rgba(255, 183, 197, 0.7);
+        margin-bottom: 10px;
+    }
+
+    /* Posisi Foto di HP */
+    .hero-image-wrapper {
+        position: relative;
+        right: auto;
+        bottom: auto;
+        width: 100%;
+        height: auto;
+        max-height: 400px;
+        margin: 20px 0 30px;
+        border-radius: 20px;
+        z-index: 1; /* Foto diletakkan di antara Teks dan Background */
+    }
+}
+/* Responsive HANDPHONE END */
 
 /* Intro Section & Slanted Moving Collage */
 .intro {
-    padding: 80px 0;
+    padding: 80px 0 40px;
     background-color: var(--sakura-light);
     position: relative;
     overflow: hidden;
@@ -166,14 +226,14 @@ h1, h2, h3, .elegant-title, .age-text, .number-bg {
 .intro-title-wrapper {
     padding: 0 5% 40px;
 }
-/* Menyerong Marquee Container */
+
 .slanted-collage-container {
     transform: rotate(-4deg) scale(1.05);
-    padding: 35px 0; /* Sedikit ditambah agar bayangan polaroid baris bawah tidak terpotong */
+    padding: 35px 0;
     background: rgba(224, 82, 151, 0.08);
     display: flex;
-    flex-direction: column; /* Wajib: agar baris 1 dan baris 2 menumpuk ke bawah */
-    gap: 25px; /* Jarak konstan antar baris foto */
+    flex-direction: column;
+    gap: 25px;
     overflow: hidden;
     width: 100vw;
     position: relative;
@@ -186,39 +246,28 @@ h1, h2, h3, .elegant-title, .age-text, .number-bg {
     user-select: none;
 }
 
-/* Track Bergerak Base */
 .marquee-track {
     display: flex;
     width: max-content;
 }
 
-/* Efek Hover Jeda untuk Kedua Baris */
 .slanted-collage-container:hover .marquee-track {
     animation-play-state: paused;
 }
 
 .marquee-group {
     display: flex;
-    gap: 20px; /* Jarak antar polaroid di dalam grup */
-    padding-right: 20px; /* Jeda penyeimbang loop animasi */
+    gap: 20px;
+    padding-right: 20px;
     flex-shrink: 0;
 }
 
-/* --- PENGATURAN ANIMASI ASYNCHRONOUS --- */
-
-/* Baris Atas: Bergerak ke Kiri */
-.track-left {
-    animation: continuousMarqueeLeft 25s linear infinite;
-}
-
-/* Baris Bawah: Bergerak ke Kanan (Kecepatan 30s berbeda agar tidak monoton) */
-.track-right {
-    animation: continuousMarqueeRight 30s linear infinite;
-}
+.track-left { animation: continuousMarqueeLeft 25s linear infinite; }
+.track-right { animation: continuousMarqueeRight 30s linear infinite; }
 
 @keyframes continuousMarqueeLeft {
     0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); } /* Geser tepat setengah total lebar grup */
+    100% { transform: translateX(-50%); }
 }
 
 @keyframes continuousMarqueeRight {
@@ -226,7 +275,6 @@ h1, h2, h3, .elegant-title, .age-text, .number-bg {
     100% { transform: translateX(0); }
 }
 
-/* Gaya Kartu Polaroid */
 .collage-item {
     width: 200px;
     height: 250px;
@@ -239,7 +287,7 @@ h1, h2, h3, .elegant-title, .age-text, .number-bg {
 }
 
 .collage-item:hover {
-    transform: scale(1.05) rotate(2deg); /* Ditambah sedikit rotasi saat di-hover agar lebih dinamis */
+    transform: scale(1.05) rotate(2deg);
 }
 
 .collage-item img {
@@ -249,20 +297,14 @@ h1, h2, h3, .elegant-title, .age-text, .number-bg {
     border-radius: 4px;
 }
 
-
-@keyframes continuousMarquee {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-50%);
-    }
+@media (max-width: 768px) {
+    .collage-item { width: 140px; height: 190px; }
 }
 
 /* Content Sections */
 .content-section {
     position: relative;
-    padding: 120px 8%;
+    padding: 100px 8%;
     min-height: 85vh;
     display: flex;
     align-items: center;
@@ -286,10 +328,7 @@ h1, h2, h3, .elegant-title, .age-text, .number-bg {
     user-select: none;
 }
 
-.section-2 .number-bg {
-    left: auto;
-    right: 5%;
-}
+.section-2 .number-bg { left: auto; right: 5%; }
 
 .text-card {
     position: relative;
@@ -313,23 +352,8 @@ h1, h2, h3, .elegant-title, .age-text, .number-bg {
     margin-bottom: 10px;
 }
 
-.text-card h3 {
-    font-size: 2.4rem;
-    margin-bottom: 18px;
-    color: var(--rose-dark);
-}
-
-.text-card p {
-    line-height: 1.85;
-    color: var(--text-color);
-    font-size: 1rem;
-}
-
-/* Photo Styling (Polaroids) */
-.photo-container {
-    position: relative;
-    z-index: 2;
-}
+.text-card h3 { font-size: 2.4rem; margin-bottom: 18px; color: var(--rose-dark); }
+.text-card p { line-height: 1.85; color: var(--text-color); font-size: 1rem; }
 
 .polaroid-frame {
     background: white;
@@ -340,180 +364,76 @@ h1, h2, h3, .elegant-title, .age-text, .number-bg {
     transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.polaroid-frame:hover {
-    transform: scale(1.04) rotate(0deg) !important;
-}
-
-.polaroid {
-    width: 100%;
-    height: auto;
-    border-radius: 4px;
-    display: block;
-}
-
-.polaroid-caption {
-    margin-top: 15px;
-    text-align: center;
-    font-family: var(--font-heading);
-    font-style: italic;
-    color: var(--rose-dark);
-}
+.polaroid-frame:hover { transform: scale(1.04) rotate(0deg) !important; }
+.polaroid { width: 100%; height: auto; border-radius: 4px; display: block; }
+.polaroid-caption { margin-top: 15px; text-align: center; font-family: var(--font-heading); font-style: italic; color: var(--rose-dark); }
 
 .rotate-left { transform: rotate(-6deg); }
 .rotate-right { transform: rotate(7deg) translateY(20px); }
 
+/* Responsive Content Sections (HP) */
+@media (max-width: 768px) {
+    .content-section, .section-2 {
+        flex-direction: column;
+        padding: 60px 5%;
+        min-height: auto;
+        text-align: center;
+    }
+    
+    .number-bg, .section-2 .number-bg {
+        font-size: 12rem;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        top: 20%;
+    }
+    
+    .text-card {
+        max-width: 100%;
+        padding: 25px;
+        margin: 0 auto;
+    }
+    
+    .text-card h3 { font-size: 1.8rem; }
+    .polaroid-frame { max-width: 280px; margin: 0 auto; }
+    
+    .multi-photo {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+
 /* To Love Section */
-.section-love {
-    background: linear-gradient(180deg, #fce4ec 0%, #f3d0dd 100%);
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
+.section-love { background: linear-gradient(180deg, #fce4ec 0%, #f3d0dd 100%); flex-direction: column; align-items: center; text-align: center; }
+.love-header { margin-bottom: 40px; }
+.love-header .subtitle { font-family: var(--font-heading); font-size: 1.6rem; color: var(--sakura-deep); font-style: italic; }
+.love-grid { display: flex; gap: 40px; align-items: center; justify-content: center; flex-wrap: wrap; max-width: 1000px; }
+.love-image-box { width: 320px; height: 440px; border-radius: 16px; overflow: hidden; box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
+.silhouette-img { width: 100%; height: 100%; object-fit: cover; }
+.glass-card { text-align: left; max-width: 550px; }
 
-.love-header {
-    margin-bottom: 40px;
-}
-
-.love-header .subtitle {
-    font-family: var(--font-heading);
-    font-size: 1.6rem;
-    color: var(--sakura-deep);
-    font-style: italic;
-}
-
-.love-grid {
-    display: flex;
-    gap: 40px;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    max-width: 1000px;
-}
-
-.love-image-box {
-    width: 320px;
-    height: 440px;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-}
-
-.silhouette-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.glass-card {
-    text-align: left;
-    max-width: 550px;
+@media (max-width: 768px) {
+    .love-image-box { width: 100%; height: 350px; max-width: 400px; }
+    .glass-card { text-align: center; }
 }
 
 /* Extra Memory Gallery */
-.memory-section {
-    padding: 100px 8%;
-    background: white;
-    text-align: center;
-}
-
-.section-heading {
-    font-size: 3rem;
-    color: var(--rose-dark);
-    margin-bottom: 50px;
-    font-style: italic;
-}
-
-.memory-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 25px;
-}
-
-.memory-card {
-    background: var(--bg-main);
-    padding: 15px;
-    border-radius: 12px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-    transition: transform 0.3s ease;
-}
-
-.memory-card:hover {
-    transform: translateY(-8px);
-}
-
-.memory-card img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 12px;
-}
-
-.memory-card h4 {
-    color: var(--rose-dark);
-    font-weight: 500;
-}
+.memory-section { padding: 100px 8%; background: white; text-align: center; }
+.section-heading { font-size: 3rem; color: var(--rose-dark); margin-bottom: 50px; font-style: italic; }
+.memory-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; }
+.memory-card { background: var(--bg-main); padding: 15px; border-radius: 12px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); transition: transform 0.3s ease; }
+.memory-card:hover { transform: translateY(-8px); }
+.memory-card img { width: 100%; height: 220px; object-fit: cover; border-radius: 8px; margin-bottom: 12px; }
+.memory-card h4 { color: var(--rose-dark); font-weight: 500; }
 
 /* Outro Section */
-.outro {
-    height: 85vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, #3d1525 0%, #1a0810 100%);
-    color: white;
-    text-align: center;
-    position: relative;
-}
+.outro { height: 85vh; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #3d1525 0%, #1a0810 100%); color: white; text-align: center; position: relative; }
+.outro .elegant-title { color: var(--sakura-pink); font-size: 4.5rem; margin-bottom: 15px; }
+.outro .name { font-family: var(--font-heading); font-style: italic; font-size: 2.2rem; letter-spacing: 2px; }
+.sparkle { font-size: 2.5rem; margin-bottom: 10px; }
+.footer-note { margin-top: 30px; font-size: 0.9rem; opacity: 0.6; }
 
-.outro .elegant-title {
-    color: var(--sakura-pink);
-    font-size: 4.5rem;
-    margin-bottom: 15px;
-}
-
-.outro .name {
-    font-family: var(--font-heading);
-    font-style: italic;
-    font-size: 2.2rem;
-    letter-spacing: 2px;
-}
-
-.sparkle {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-}
-
-.footer-note {
-    margin-top: 30px;
-    font-size: 0.9rem;
-    opacity: 0.6;
-}
-
-/* Responsive Styles */
 @media (max-width: 768px) {
-    .hero {
-        flex-direction: column;
-        justify-content: center;
-        text-align: center;
-        padding-top: 60px;
-    }
-    .hero-content {
-        max-width: 100%;
-    }
-    .hero-content h1 {
-        font-size: 3.8rem;
-    }
-    .hero-image-wrapper {
-        width: 260px;
-        height: 350px;
-        margin-top: 30px;
-    }
-    .content-section {
-        flex-direction: column;
-        padding: 80px 6%;
-    }
-    .text-card {
-        max-width: 100%;
-    }
+    .outro { height: auto; padding: 80px 20px; }
+    .outro .elegant-title { font-size: 3rem; }
 }

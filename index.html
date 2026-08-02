@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Happy 18th Birthday - Nidaa Latifah Sayang</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -11,76 +11,78 @@
 
     <canvas id="sakuraCanvas"></canvas>
 
- <section class="hero slide-in">
-    <div class="hero-overlay"></div>
-    
-    <div class="hero-content">
-        <!-- Badge sekarang berada di dalam kelompok kiri -->
-        <div class="hero-content-left">
-            <span class="badge-sakura">🌸 Special Day</span>
-            <h1>HAPPY<br>BIRTHDAY!</h1>
-            <p class="date">August 03, 2026</p>
-        </div>
+    <section class="hero slide-in">
+        <div class="hero-overlay"></div>
         
-        <!-- Tulisan ini akan otomatis terlempar ke ujung kanan -->
-        <p class="age-text" style="padding-right: 15vh;">18th</p>
-    </div>
-    
-    <div class="hero-image-wrapper">
-        <img src="img/IMG-20260710-WA0023.jpg.jpeg" alt="Foto Utama" class="hero-image" onerror="this.src='https://placehold.co/600x800/f8c8dc/333?text=Foto+Utama'">
-    </div>
-</section>
+        <div class="hero-content">
+            <!-- Grup Teks Kiri Atas -->
+            <div class="hero-text-group">
+                <div class="hero-content-left">
+                    <span class="badge-sakura">🌸 Special Day</span>
+                    <h1>HAPPY<br>BIRTHDAY!</h1>
+                    <p class="date">August 03, 2026</p>
+                </div>
+                <!-- Tulisan 18 (Sekarang ada dalam satu grup agar tidak terlempar ke luar layar di HP) -->
+                <div class="age-wrapper">
+                    <p class="age-text">18th</p>
+                </div>
+            </div>
+            
+            <!-- Foto Utama -->
+            <div class="hero-image-wrapper">
+                <img src="img/IMG-20260710-WA0023.jpg.jpeg" alt="Foto Utama" class="hero-image" onerror="this.src='https://placehold.co/600x800/f8c8dc/333?text=Foto+Utama'">
+            </div>
+        </div>
+    </section>
+
     <!-- Intro Section & Kolase Bergerak Menyerong Seamless -->
     <div class="slanted-collage-container">
-    <!-- BARIS 1: Bergerak ke Kiri (Normal) -->
-    <div class="marquee-track track-left">
-        <!-- Grup Foto 1 -->
-        <div class="marquee-group">
-            <div class="collage-item"><img src="img/1.jpg.jpeg" alt="Memory 1"></div>
-            <div class="collage-item"><img src="img/IMG_6200.jpg.jpeg" alt="Memory 2"></div>
-            <div class="collage-item"><img src="img/PXL_20250406_143928672.jpg.jpeg" alt="Memory 3"></div>
-            <div class="collage-item"><img src="img/IMG_20241210_163713.jpg.jpeg" alt="Memory 4"></div>
-            <div class="collage-item"><img src="img/1b129296c0aad6e53dc263ce115b0784_1729592951235_0.webp.jpg.jpeg" alt="Memory 5"></div>
-            <div class="collage-item"><img src="img/DSC_0290.jpg.jpeg" alt="Memory 6"></div>
+        <!-- BARIS 1: Bergerak ke Kiri (Normal) -->
+        <div class="marquee-track track-left">
+            <div class="marquee-group">
+                <div class="collage-item"><img src="img/1.jpg.jpeg" alt="Memory 1"></div>
+                <div class="collage-item"><img src="img/IMG_6200.jpg.jpeg" alt="Memory 2"></div>
+                <div class="collage-item"><img src="img/PXL_20250406_143928672.jpg.jpeg" alt="Memory 3"></div>
+                <div class="collage-item"><img src="img/IMG_20241210_163713.jpg.jpeg" alt="Memory 4"></div>
+                <div class="collage-item"><img src="img/1b129296c0aad6e53dc263ce115b0784_1729592951235_0.webp.jpg.jpeg" alt="Memory 5"></div>
+                <div class="collage-item"><img src="img/DSC_0290.jpg.jpeg" alt="Memory 6"></div>
+            </div>
+            <div class="marquee-group" aria-hidden="true">
+                <div class="collage-item"><img src="img/1.jpg.jpeg" alt="Memory 1"></div>
+                <div class="collage-item"><img src="img/IMG_6200.jpg.jpeg" alt="Memory 2"></div>
+                <div class="collage-item"><img src="img/PXL_20250406_143928672.jpg.jpeg" alt="Memory 3"></div>
+                <div class="collage-item"><img src="img/IMG_20241210_163713.jpg.jpeg" alt="Memory 4"></div>
+                <div class="collage-item"><img src="img/1b129296c0aad6e53dc263ce115b0784_1729592951235_0.webp.jpg.jpeg" alt="Memory 5"></div>
+                <div class="collage-item"><img src="img/DSC_0290.jpg.jpeg" alt="Memory 6"></div>
+            </div>
         </div>
-        <!-- Grup Foto 2 (Duplikat Persis) -->
-        <div class="marquee-group" aria-hidden="true">
-            <div class="collage-item"><img src="img/1.jpg.jpeg" alt="Memory 1"></div>
-            <div class="collage-item"><img src="img/IMG_6200.jpg.jpeg" alt="Memory 2"></div>
-            <div class="collage-item"><img src="img/PXL_20250406_143928672.jpg.jpeg" alt="Memory 3"></div>
-            <div class="collage-item"><img src="img/IMG_20241210_163713.jpg.jpeg" alt="Memory 4"></div>
-            <div class="collage-item"><img src="img/1b129296c0aad6e53dc263ce115b0784_1729592951235_0.webp.jpg.jpeg" alt="Memory 5"></div>
-            <div class="collage-item"><img src="img/DSC_0290.jpg.jpeg" alt="Memory 6"></div>
+
+        <!-- BARIS 2: Bergerak ke Kanan (Asynchronous) -->
+        <div class="marquee-track track-right">
+            <div class="marquee-group">
+                <div class="collage-item"><img src="img/PXL_20250406_143503554.jpg.jpeg" alt="Memory 6"></div>
+                <div class="collage-item"><img src="img/IMG-20260328-WA0024.jpg.jpeg" alt="Memory 5"></div>
+                <div class="collage-item"><img src="img/PXL_20260312_161726326.jpg.jpeg" alt="Memory 4"></div>
+                <div class="collage-item"><img src="img/IMG_20260328_145546.jpg.jpeg" alt="Memory 3"></div>
+                <div class="collage-item"><img src="img/20260329_164453_187_IMG_4797_20260329_164356.JPG.jpeg" alt="Memory 2"></div>
+                <div class="collage-item"><img src="img/DSC_0010.jpg.jpeg" alt="Memory 1"></div>
+            </div>
+            <div class="marquee-group" aria-hidden="true">
+                <div class="collage-item"><img src="img/PXL_20250406_143503554.jpg.jpeg" alt="Memory 6"></div>
+                <div class="collage-item"><img src="img/IMG-20260328-WA0024.jpg.jpeg" alt="Memory 5"></div>
+                <div class="collage-item"><img src="img/PXL_20260312_161726326.jpg.jpeg" alt="Memory 4"></div>
+                <div class="collage-item"><img src="img/IMG_20260328_145546.jpg.jpeg" alt="Memory 3"></div>
+                <div class="collage-item"><img src="img/20260329_164453_187_IMG_4797_20260329_164356.JPG.jpeg" alt="Memory 2"></div>
+                <div class="collage-item"><img src="img/DSC_0010.jpg.jpeg" alt="Memory 1"></div>
+            </div>
         </div>
     </div>
 
-    <!-- BARIS 2: Bergerak ke Kanan (Asynchronous / Terbalik) -->
-    <div class="marquee-track track-right">
-        <!-- Grup Foto 1 -->
-        <div class="marquee-group">
-            <div class="collage-item"><img src="img/PXL_20250406_143503554.jpg.jpeg" alt="Memory 6"></div>
-            <div class="collage-item"><img src="img/IMG-20260328-WA0024.jpg.jpeg" alt="Memory 5"></div>
-            <div class="collage-item"><img src="img/PXL_20260312_161726326.jpg.jpeg" alt="Memory 4"></div>
-            <div class="collage-item"><img src="img/IMG_20260328_145546.jpg.jpeg" alt="Memory 3"></div>
-            <div class="collage-item"><img src="img/20260329_164453_187_IMG_4797_20260329_164356.JPG.jpeg" alt="Memory 2"></div>
-            <div class="collage-item"><img src="img/DSC_0010.jpg.jpeg" alt="Memory 1"></div>
+    <section class="intro slide-in">
+        <div class="intro-title-wrapper">
+            <h2 class="elegant-title">3 things you get when you turn <span>18</span></h2>
         </div>
-        <!-- Grup Foto 2 (Duplikat Persis) -->
-        <div class="marquee-group" aria-hidden="true">
-            <div class="collage-item"><img src="img/PXL_20250406_143503554.jpg.jpeg" alt="Memory 6"></div>
-            <div class="collage-item"><img src="img/IMG-20260328-WA0024.jpg.jpeg" alt="Memory 5"></div>
-            <div class="collage-item"><img src="img/PXL_20260312_161726326.jpg.jpeg" alt="Memory 4"></div>
-            <div class="collage-item"><img src="img/IMG_20260328_145546.jpg.jpeg" alt="Memory 3"></div>
-            <div class="collage-item"><img src="img/20260329_164453_187_IMG_4797_20260329_164356.JPG.jpeg" alt="Memory 2"></div>
-            <div class="collage-item"><img src="img/DSC_0010.jpg.jpeg" alt="Memory 1"></div>
-        </div>
-    </div>
-</div>
-
-            <section class="intro slide-in">
-                <div class="intro-title-wrapper">
-                    <h2 class="elegant-title">3 things you get when you turn <span>18</span></h2>
-                </div>
+    </section>
 
     <!-- Rank 3 -->
     <section class="content-section section-3 slide-in">
@@ -165,11 +167,11 @@
                 <h4>MTS Days</h4>
             </div>
             <div class="memory-card">
-                <img src="/img/IMG_20241124_160441.jpg.jpeg" alt="Memory">
+                <img src="img/IMG_20241124_160441.jpg.jpeg" alt="Memory">
                 <h4>Lucu lucuan</h4>
             </div>
             <div class="memory-card">
-                <img src="/img/165971-Ngonten_Box_-_Sumedang-d42-template.jpg.jpeg" alt="Memory">
+                <img src="img/165971-Ngonten_Box_-_Sumedang-d42-template.jpg.jpeg" alt="Memory">
                 <h4>Pramuka Pramuki</h4>
             </div>
         </div>
